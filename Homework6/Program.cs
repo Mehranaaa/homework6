@@ -3,7 +3,6 @@
 namespace ConsoleApp2
 {
 
-
     class Program
     {
         static void Main(string[] args)
@@ -12,52 +11,46 @@ namespace ConsoleApp2
             {
                 try
                 {
-                    string firstName, secondName, bigname;
-                    int firstAge, secondAge;
+                    string name1, name2, bigname;
+                    int age1, age2;
 
-                    FirstPerson(out firstName, out firstAge);
-                    SecondPerson(out secondName, out secondAge);
-                    BigName(out bigname);
+                    Names(out name1, out name2);
+                    Ages(out age1, out age2);
 
-                    if (firstAge > secondAge)
+                    Console.WriteLine("Кто из двоих старше? ");
+                    bigname = Console.ReadLine();
+
+                    if (age1 > age2)
                     {
-                        if (bigname == firstName)
+                        if (bigname == name1)
                         {
-                            Console.WriteLine($"Правильно! {firstName} старше на {firstAge - secondAge} лет.");
+                            Console.WriteLine($"Правильно! {name1} старше на {age1 - age2} лет.");
                         }
                         else
                         {
-                            Console.WriteLine($"Неправильно! {firstName} старше на {firstAge - secondAge} лет.");
+                            Console.WriteLine($"Неправильно! {name1} старше на {age1 - age2} лет.");
                         }
                     }
 
-                    else if (secondAge > firstAge)
+                    else if (age2 > age1)
                     {
-                        if (bigname == secondName)
+                        if (bigname == name2)
                         {
-                            Console.WriteLine($"Правильно! {secondName} старше на {secondAge - firstAge} лет.");
+                            Console.WriteLine($"Правильно! {name2} старше на {age2 - age1} лет.");
                         }
                         else
                         {
-                            Console.WriteLine($"Неправильно! {secondName} старше на {secondAge - firstAge} лет.");
+                            Console.WriteLine($"Неправильно! {name2} старше на {age2 - age1} лет.");
                         }
                     }
 
                     else
                     {
-                        if (bigname == firstName || bigname == secondName)
-                        {
-                            Console.WriteLine($"Неправильно! {firstName} и {secondName} одного возраста.");
-                        }
-                        else
-                        {
-                            Console.WriteLine($"{firstName} и {secondName} одного возраста.");
-                        }
+                        Console.WriteLine($"{name1} и {name2} одного возраста.");
                     }
                 }
                 catch
                 {
-                    Console.WriteLine("Ошибка. Введите настоящий возраст.");
                     continue;
                 }
                 break;
@@ -65,55 +58,45 @@ namespace ConsoleApp2
 
         }
 
-        static void FirstPerson(out string firstName, out int firstAge)
+
+        static void Names(out string name1, out string name2)
+        {
+
+            Console.WriteLine("Введите имя первого человека");
+            name1 = Console.ReadLine();
+
+            Console.WriteLine("Введите имя второго человека");
+            name2 = Console.ReadLine();
+        }
+
+        static void Ages(out int age1, out int age2)
         {
             while (true)
             {
-                Console.WriteLine("Введите имя первого человека");
-                firstName = Console.ReadLine();
-
-
-                Console.WriteLine("Введите возраст первого человека");
-                firstAge = Convert.ToInt32(Console.ReadLine());
-                if (firstAge <= 0 || firstAge > 97)
+                try
                 {
-                    Console.WriteLine("Ошибка. Введите настоящий возраст.");
-                    continue;
+                    Console.WriteLine("Введите возраст первого человека");
+                    age1 = Convert.ToInt32(Console.ReadLine());
+                    if (age1 <= 0 || age1 > 97)
+                    {
+                        continue;
+                    }
+                    Console.WriteLine("Введите возраст второго человека");
+                    age2 = Convert.ToInt32(Console.ReadLine());
+                    if (age2 <= 0 || age2 > 97)
+                    {
+                        continue;
+                    }
                 }
-                break;
-            }
-
-        }
-
-        static void SecondPerson(out string secondName, out int secondAge)
-        {
-            while (true)
-            {
-                Console.WriteLine("Введите имя второго человека");
-                secondName = Console.ReadLine();
-
-                Console.WriteLine("Введите возраст второго человека");
-                secondAge = Convert.ToInt32(Console.ReadLine());
-                if (secondAge <= 0 || secondAge > 97)
+                catch
                 {
-                    Console.WriteLine("Ошибка. Введите настоящий возраст.");
                     continue;
                 }
-                break;
-            }
-
-        }
-
-        static void BigName(out string bigname)
-        {
-            while (true)
-            {
-                Console.WriteLine("Кто из двоих старше? Если одного возраста пропустите вопрос. ");
-                bigname = Console.ReadLine();
                 break;
             }
         }
 
     }
-
 }
+
+
